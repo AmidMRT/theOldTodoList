@@ -31,12 +31,11 @@
     color: darkgray;
 }
 
-#addProj:hover , .project:hover, .addTask:hover  {
+#addProj:hover , .project:hover, .addTask:hover, .removeBtn:hover, .removeTask:hover  {
     cursor:pointer;
 }
 
 .project {
-    margin-bottom:10px;
     background-color: rgb(131, 131, 131);
     color: whitesmoke;
     border-radius: 5px;
@@ -44,9 +43,10 @@
     font-size: large;
     box-sizing: border-box;
     padding: 5px;
+    flex: 3;
 }
 
-.project:focus {
+#active {
     background-color: rgb(245, 220, 108);
     color: rgb(34, 34, 34);
 }
@@ -77,6 +77,29 @@
     padding: 10px;
     border: solid black;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+}
+
+.projContainer {
+    margin-bottom:10px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    align-content: center;
+    margin-right: -10px;
+}
+
+.removeBtn {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: darkgray;
+    width: 20px;
+}
+
+.removeTask {
+    background: none;
+    width: 30px;
+    height:30px;
+    border: none;
 }

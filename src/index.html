@@ -12,7 +12,7 @@
             <button id = "addProj">+ Add Project</button>
         </div>
         <div class="desktop"></div>
-        <dialog id="dialogBox">
+        <dialog id="taskDialog">
             <form id="taskForm" method="dialog">
                 <h2>Enter Details:</h2>
                 <label for="title">Title:</label><br>
@@ -39,15 +39,15 @@
                 <input type="date" id="date" name="date" required><br><br>
     
                 <div>
-                    <button class="close" >Cancel</button>
-                    <button class="submit" >Submit</button>
+                    <button class="task-close" >Cancel</button>
+                    <button class="task-submit" >Submit</button>
                 </div>
             </form>
         </dialog>
         <dialog id="projectDialog">
-            <form method="dialog">
+            <form id="projectForm" method="dialog">
                 <h2>Enter Project Name</h2>
-                <label for="projectName"></label><br>
+                <label for="projectName"></label><br><br>
                 <input type="text" id="projectName" name="projectName" required>
                 <div>
                     <button class="project-close" >Cancel</button>
@@ -55,6 +55,40 @@
                 </div>
             </form>
         </dialog>
+        <dialog id="editDialog">
+            <form id="taskForm" method="dialog">
+                <h2>Enter Details:</h2>
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required><br><br>
+
+                <div class="description-section">
+                    <label for="description">Description:</label><br>
+                    <textarea id="description" name="description" rows="4" cols="30" placeholder="Enter description here..." required></textarea><br><br>
+                </div>
+
+                <div class="priority-section">
+                    <p>Priority:</p>
+                    <input type="radio" id="low" name="priority" value="Low" required>
+                    <label for="low">Low</label><br>
+    
+                    <input type="radio" id="medium" name="priority" value="Medium" checked>
+                    <label for="medium">Medium</label><br>
+    
+                    <input type="radio" id="high" name="priority" value="High">
+                    <label for="high">High</label><br><br>
+                </div>
+    
+                <label for="date">Date:</label><br>
+                <input type="date" id="date" name="date" required><br><br>
+    
+                <div>
+                    <button class="task-close" >Cancel</button>
+                    <button class="task-submit" >Submit</button>
+                </div>
+            </form>
+        </dialog>
+        
+
     </div>
 </body>
 </html>
