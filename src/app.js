@@ -1,4 +1,4 @@
-const makeTask = function (title, description ,date, importance) {
+const makeTask = function (title, description, date, importance) {
   let ttl = title;
   let dsc = description;
   let priority = importance;
@@ -6,15 +6,15 @@ const makeTask = function (title, description ,date, importance) {
   let project = controlLogic().getActiveProject();
   const getTtl = () => ttl;
   const getDsc = () => dsc;
-  const getDueDate = ()=> dueDate;
-  const getPriority = ()=> priority;
+  const getDueDate = () => dueDate;
+  const getPriority = () => priority;
   const getProject = () => project;
   return {
     getTtl,
     getDsc,
     getProject,
     getDueDate,
-    getPriority
+    getPriority,
   };
 };
 
@@ -33,11 +33,16 @@ const makeProject = function (projName) {
 
 const controlLogic = function () {
   let activeProject = null;
+  let activeTask = null;
   const getActiveProject = () => activeProject;
   const updateActiveProject = (proj) => (activeProject = proj);
+  const getActiveTask = () => activeTask;
+  const updateActiveTask = (task) => (activeTask = task);
   return {
     getActiveProject,
     updateActiveProject,
+    getActiveTask,
+    updateActiveTask,
   };
 };
 
