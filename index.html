@@ -8,9 +8,87 @@
 <body>
     <div class="container">
         <div class="leftBar">
-            <button id = "addProj">+</button>
+            <div class="logo">TASK MASTER</div>
+            <button id = "addProj">+ Add Project</button>
         </div>
-        <div class="desktop"> desktop</div>
+        <div class="desktop"></div>
+        <dialog id="taskDialog">
+            <form id="taskForm" method="dialog">
+                <h2>Enter Details:</h2>
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required><br><br>
+
+                <div class="description-section">
+                    <label for="description">Description:</label><br>
+                    <textarea id="description" name="description" rows="4" cols="30" placeholder="Enter description here..." required></textarea><br><br>
+                </div>
+
+                <div class="priority-section">
+                    <p>Priority:</p>
+                    <input type="radio" id="low" name="priority" value="Low" required>
+                    <label for="low">Low</label><br>
+    
+                    <input type="radio" id="medium" name="priority" value="Medium" checked>
+                    <label for="medium">Medium</label><br>
+    
+                    <input type="radio" id="high" name="priority" value="High">
+                    <label for="high">High</label><br><br>
+                </div>
+    
+                <label for="date">Date:</label><br>
+                <input type="date" id="date" name="date" required><br><br>
+    
+                <div>
+                    <button id="task-close" class="task-close" >Cancel</button>
+                    <button id="task-submit" class="task-submit" >Submit</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="projectDialog">
+            <form id="projectForm" method="dialog">
+                <h2>Enter Project Name</h2>
+                <label for="projectName"></label><br><br>
+                <input type="text" id="projectName" name="projectName" required>
+                <div>
+                    <button class="project-close" >Cancel</button>
+                    <button class="project-submit" >Submit</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="editDialog">
+            <form id="taskEditForm" method="dialog">
+                <h2>Enter Details:</h2>
+                <label for="title">Title:</label><br>
+                <input type="text" id="edit-title" name="title" required><br><br>
+
+                <div class="description-section">
+                    <label for="description">Description:</label><br>
+                    <textarea id="edit-description" name="description" rows="4" cols="30" placeholder="Enter description here..." required></textarea><br><br>
+                </div>
+
+                <div class="edit-priority-section">
+                    <p>Priority:</p>
+                    <input type="radio" class="edit-low" id="low" name="edit-priority" value="Low" required>
+                    <label for="low">Low</label><br>
+    
+                    <input type="radio" class="edit-medium" id="medium" name="edit-priority" value="Medium" >
+                    <label for="medium">Medium</label><br>
+    
+                    <input type="radio" class="edit-high" id="high" name="edit-priority" value="High">
+                    <label for="high">High</label><br><br>
+                </div>
+    
+                <label for="date">Date:</label><br>
+                <input class="edit-date" type="date" id="date" name="date" required><br><br>
+    
+                <div>
+                    <button class="edit-task-close" >Cancel</button>
+                    <button class="edit-task-submit" >Submit</button>
+                </div>
+            </form>
+        </dialog>
+        
+
     </div>
 </body>
 </html>
