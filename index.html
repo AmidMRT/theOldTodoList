@@ -8,10 +8,11 @@
 <body>
     <div class="container">
         <div class="leftBar">
+            <h4 style=" color: darkgray; text-align: center; font-size: small;">made by <a style="color: darkgray;" href="https://github.com/AmidMRT/theOldTodoList">A. Mortazavi</a></h4>
             <div class="logo">TASK MASTER</div>
             <button id = "addProj">+ Add Project</button>
         </div>
-        <div class="desktop"></div>
+        <div class="desktop">Please choose/add a project</div>
         <dialog id="taskDialog">
             <form id="taskForm" method="dialog">
                 <h2>Enter Details:</h2>
@@ -25,7 +26,7 @@
 
                 <div class="priority-section">
                     <p>Priority:</p>
-                    <input type="radio" id="low" name="priority" value="Low" required>
+                    <input type="radio" id="low" name="priority" value="Low">
                     <label for="low">Low</label><br>
     
                     <input type="radio" id="medium" name="priority" value="Medium" checked>
@@ -47,9 +48,9 @@
         <dialog id="projectDialog">
             <form id="projectForm" method="dialog">
                 <h2>Enter Project Name</h2>
-                <label for="projectName"></label><br><br>
-                <input type="text" id="projectName" name="projectName" required>
-                <div>
+                <label for="projectName"></label><br>
+                <input type="text" id="projectName" name="projectName">
+                <div><br>
                     <button class="project-close" >Cancel</button>
                     <button class="project-submit" >Submit</button>
                 </div>
@@ -63,12 +64,12 @@
 
                 <div class="description-section">
                     <label for="description">Description:</label><br>
-                    <textarea id="edit-description" name="description" rows="4" cols="30" placeholder="Enter description here..." required></textarea><br><br>
+                    <textarea id="edit-description" name="description" rows="4" cols="30" placeholder="Enter description here..."></textarea><br><br>
                 </div>
 
                 <div class="edit-priority-section">
                     <p>Priority:</p>
-                    <input type="radio" class="edit-low" id="low" name="edit-priority" value="Low" required>
+                    <input type="radio" class="edit-low" id="low" name="edit-priority" value="Low" >
                     <label for="low">Low</label><br>
     
                     <input type="radio" class="edit-medium" id="medium" name="edit-priority" value="Medium" >
@@ -79,7 +80,7 @@
                 </div>
     
                 <label for="date">Date:</label><br>
-                <input class="edit-date" type="date" id="date" name="date" required><br><br>
+                <input class="edit-date" type="date" id="date" name="date"><br><br>
     
                 <div>
                     <button class="edit-task-close" >Cancel</button>
