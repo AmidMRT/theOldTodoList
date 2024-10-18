@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>the old todo list</title>
-<script defer src="main.js"></script></head>
+</head>
 <body>
     <div class="container">
         <div class="leftBar">
-            <h4 style=" color: darkgray; text-align: center; font-size: small;">made by <a style="color: darkgray;" href="https://github.com/AmidMRT/theOldTodoList">A. Mortazavi</a></h4>
             <div class="logo">TASK MASTER</div>
             <button id = "addProj">+ Add Project</button>
         </div>
@@ -48,9 +47,9 @@
         <dialog id="projectDialog">
             <form id="projectForm" method="dialog">
                 <h2>Enter Project Name</h2>
-                <label for="projectName"></label><br>
+                <label for="projectName"></label><br><br>
                 <input type="text" id="projectName" name="projectName">
-                <div><br>
+                <div>
                     <button class="project-close" >Cancel</button>
                     <button class="project-submit" >Submit</button>
                 </div>

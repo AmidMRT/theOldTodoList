@@ -149,7 +149,7 @@ const submitEditTask = (function () {
 const removeTask = (function () {
   document.addEventListener("click", (e) => {
     if (e.target.matches(".removeTask")) {
-      let taskDiv = e.target.parentElement;
+      let taskDiv = e.target.parent;
       let relatedTaskIndex = Array.from(
         document.querySelectorAll(".task")
       ).indexOf(taskDiv);
@@ -252,18 +252,7 @@ function showTasks() {
       rmvTask.className = "removeTask";
       rmvTask.textContent = "X";
       taskDiv.className = "task";
-      if (!taskItem.getDueDate() == "") {
-        taskDiv.textContent = `${taskItem.getTtl()} --- Date: ${taskItem.getDueDate()}`;
-      } else {
-        taskDiv.textContent = `${taskItem.getTtl()}`;
-      }
-      if (taskItem.getPriority() == "High") {
-        taskDiv.id = "highPriority";
-      } else if (taskItem.getPriority() == "Low") {
-        taskDiv.id = "lowPriority";
-      } else {
-        taskDiv.id = "mediumPriority";
-      }
+      taskDiv.textContent = `${taskItem.getTtl()} --- Date: ${taskItem.getDueDate()}`;
       taskDiv.appendChild(rmvTask);
       let workspace = desktop;
       workspace.insertBefore(taskDiv, document.querySelector(".addTask"));
