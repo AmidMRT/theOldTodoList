@@ -1,10 +1,52 @@
+// import { JavascriptModulesPlugin } from "webpack";
 import { controlLogic, makeProject, makeTask } from "./app";
 import "./styles.css";
 
 let projectList = [];
 const control = controlLogic(); //cache first active project (which is null)
-
 const desktop = document.querySelector(".desktop");
+let savedData = {};
+let previousSessionData = JSON.parse(localStorage.getItem("todoInfo"));
+
+console.log(JSON.parse(localStorage.getItem("todoInfo")));
+
+const renderPrevious = (function () {
+  if (
+    previousSessionData != null &&
+    Object.keys(previousSessionData).length > 2
+  ) {
+    savedData = previousSessionData;
+    for (let i = 0; i < Object.keys(savedData).length; i++) {
+      console.log(Object.keys(savedData).length);
+    }
+    rebuildPreviousInfo();
+  }
+})();
+
+function rebuildPreviousInfo() {
+  for (let i = 0; i < Object.keys(savedData).length - 2; i++) {
+    let project = makeProject(savedData[i].name);
+    for (let j = 0; j < Object.keys(savedData[i]).length-1 ; j++) {
+      let task = makeTask(
+        savedData[i][`task${j}`].name,
+        savedData[i][`task${j}`].description,
+        savedData[i][`task${j}`].date,
+        savedData[i][`task${j}`].priority
+      );
+      console.log(task)
+      project.addTask(task);
+      if (savedData.activeTask == task.getTtl()) {
+        control.updateActiveTask(task);
+      }
+    }
+    if (savedData.activeProject == project.getName()) {
+      control.updateActiveProject(project);
+    }
+    projectList.push(project);
+    addProjectToDOM(project);
+    console.log(project.getTasks())
+  }
+}
 
 const addProject = (function () {
   document.querySelector("#addProj").addEventListener("click", () => {
@@ -280,3 +322,34 @@ function getTaskInfo() {
   let dialog = document.querySelector("#taskDialog");
   dialog.showModal();
 }
+
+//localStorage control
+
+window.addEventListener("beforeunload", () => {
+  localStorage.clear();
+  let outputObj = {};
+  if (projectList.length > 0) {
+    projectList.forEach((project, projectIndex) => {
+      let projectObj = {};
+      projectObj.name = project.getName();
+      project.getTasks().forEach((task, taskIndex) => {
+        let taskKey = `task${taskIndex}`;
+        projectObj[taskKey] = {
+          name: task.getTtl(),
+          description: task.getDsc(),
+          date: task.getDueDate(),
+          priority: task.getPriority(),
+        };
+      });
+      outputObj[projectIndex] = projectObj;
+    });
+  }
+  projectList = [];
+  outputObj.activeProject =
+    control.getActiveProject() != null
+      ? control.getActiveProject().getName()
+      : null;
+  outputObj.activeTask =
+    control.getActiveTask() != null ? control.getActiveTask().getTtl() : null;
+  localStorage.setItem("todoInfo", JSON.stringify(outputObj));
+});
